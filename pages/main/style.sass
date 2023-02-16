@@ -1,0 +1,873 @@
+$color-main1: #F1CDB3
+$color-main2: #545454
+$color-main3: #CDCDCD
+$color-main4: #292929
+$color-main5: #F6F6F6
+
+$desktop: 1279px
+$tablet: 767px
+$mobile: 320px
+
+@mixin flex-hor($type)
+    display: flex
+    justify-content: $type
+@mixin flex-vert($type)
+    display: flex
+    flex-direction: column
+    justify-content: $type
+@mixin bg-img($url)
+    background-image: url($url)
+    background-repeat: no-repeat
+@mixin no-margin()
+    margin: 0
+@mixin font-arial($weight, $size, $line, $color)
+    font-family: Arial
+    font-weight: $weight
+    font-size: $size
+    line-height: $line
+    color: $color
+@mixin font-georgia($weight, $size, $line, $color)
+    font-family: Georgia, 'Times New Roman', serif
+    font-weight: $weight
+    font-size: $size
+    line-height: $line
+    color: $color
+@mixin button()
+    cursor: pointer
+    opacity: 0.9
+
+html
+    scroll-behavior: smooth
+    overflow-x: hidden
+
+button
+    &:hover
+        @include button()
+
+
+ul
+    list-style-type: none
+
+li
+    transition: 0.1s
+
+.m1
+    color: white !important
+    width: 114px
+    border-bottom: 2px solid $color-main1
+    @media screen and (max-width: $tablet)
+        border: none
+.m2
+    width: 58px
+.m3
+    width: 106px
+.m4
+    width: 60px
+
+a
+    text-decoration: none
+    &:visited
+        color: $color-main3
+    &:link
+        color: $color-main3
+    &:hover
+        opacity: 0.7
+
+body
+    @include no-margin()
+    @include flex-hor(center)
+    background-color: #292929
+    .container
+        width: 1280px
+        @include bg-img('../../assets/images/start-bg.jpg')
+        background-position-x: 80% 
+        header
+            padding: 0 40px
+            margin-top: 60px
+            @include flex-hor(space-between)
+            height: 60px
+            .logo
+                @include flex-vert(space-between)
+                h3
+                    @include no-margin()
+                    @include font-georgia(400, 32px, 35.2px, $color-main1)
+                    letter-spacing: 0.06em
+                p
+                    @include no-margin()
+                    @include font-arial(400, 13px, 14.95px, white)
+                    text-align: center
+                    letter-spacing: 0.10em
+            .burger
+                display: none
+                width: 30px
+                height: 22px
+                @include bg-img('../../assets/icons/burger-gold.svg')
+                z-index: 12
+                transition: 0.5s
+            .menu-full
+                @include flex-hor(space-between)
+                @include no-margin()
+                align-items: center
+                padding: 0
+                width: 443px
+                li
+                    @include font-arial(400, 15px, 24px, $color-main3)
+            .menu-bg
+                position: fixed
+                top: 0
+                right: -330px
+                width: 330px
+                height: 100%
+                z-index: 9
+                background-color: $color-main4
+                transition: 0.5s
+                @media screen and (min-width: 768px)
+                    display: none
+            .bg
+                position: fixed
+                top: 0
+                right: 0
+                width: 110%
+                height: 110%
+                background-color: $color-main4
+                z-index: -1
+                opacity: 0
+                transition: 0.8s
+                @media screen and (min-width: 768px)
+                    display: none
+
+        
+        .start
+            padding: 0 40px
+            min-height: 565px
+            .content
+                margin-top: 223px
+                h1
+                    @include font-georgia(400, 44px, 57.2px, white)
+                    @include no-margin()
+                p
+                    @include font-arial(400, 15px, 24px, $color-main3)
+                    @include no-margin()
+                    margin-top: 42px
+                    max-width: 460px
+                button
+                    position: sticky
+                    z-index: 1
+                    margin-top: 42px
+                    width: 207px
+                    height: 52px
+                    background-color: $color-main1
+                    @include font-georgia(400, 17px, 22.1px, $color-main4)
+                    border-radius: 100px
+                    border: none
+                    letter-spacing: 0.06em
+        
+        .about
+            min-height: 588px
+            @include bg-img('../../assets/images/about-bg.jpg')
+            background-position-x: 59% 
+            .content
+                padding-top: 94px
+                margin-right: 16.8vw
+                float: right
+                width: 430px
+                h2
+                    @include no-margin()
+                    @include font-georgia(400, 35px, 45.5px, $color-main2)
+                    margin-bottom: 25px
+                    letter-spacing: 0.06em
+                p
+                    @include no-margin()
+                    @include font-arial(400, 15px, 24px, $color-main2)
+                    margin-bottom: 25px
+
+        .pets
+            background-color: $color-main5
+            min-height: 877px
+            padding: 0 40px
+            text-align: center
+            .exit
+                @include bg-img('../../assets/images/cross.png')
+                background-size: 100%
+                transition: 0.8s
+                &:hover
+                    @include bg-img('../../assets/icons/cross-hover.svg')
+                    cursor: pointer
+                width: 52px
+                height: 52px
+                position: absolute
+                left: 99%
+                top: -10%
+                @media screen and (max-width: 1279px)
+                    left: 98.5%
+                    top: -15%
+                @media screen and (max-width: 767px)
+                    left: 90.5%
+            .bg3
+                position: fixed
+                top: 0
+                right: 0
+                width: 110%
+                height: 110%
+                background-color: $color-main4
+                z-index: -1
+                opacity: 0
+                transition: 0.8s
+            .pet-box
+                width: 900px
+                min-height: 500px
+                position: absolute
+                background-color: white
+                border-radius: 9px
+                margin-top: 188px
+                left: calc((100% - 900px)/2)
+                opacity: 0
+                z-index: -1
+                transition: 0.8s
+                @include flex-hor(space-between)
+                @media screen and (max-width: 1279px)
+                    margin-top: 263px
+                    width: 630px
+                    min-height: 350px
+                    left: calc((100% - 630px)/2)
+                @media screen and (max-width: 767px)
+                    margin-top: 220px
+                    width: 240px
+                    min-height: 341px
+                    left: calc((100% - 240px)/2)
+                .img
+                    flex-basis: 500px
+                    background-size: 100%
+                    border-radius: 9px
+                    background-repeat: no-repeat
+                    @media screen and (max-width: 1279px)
+                        flex-basis: 350px
+                    @media screen and (max-width: 767px)
+                        display: none
+                .text
+                    flex-basis: 400px
+                    padding: 50px 17px 0 90px
+                    @media screen and (max-width: 1279px)
+                        padding: 10px 5px 0 30px
+                        flex-basis: 280px
+                    @media screen and (max-width: 767px)
+                        padding: 0
+                        margin-top: 10px
+                    h4
+                        margin: 0 0 10px 0
+                        @include font-georgia(400, 35px, 45.5px, black)
+                        letter-spacing: 0.11rem
+                        text-align: left
+                        @media screen and (max-width: 767px)
+                            text-align: center
+                    h5
+                        margin: 0 0 40px 0
+                        @include font-georgia(400, 20px, 23px, black)
+                        letter-spacing: 0.08rem
+                        text-align: left
+                        @media screen and (max-width: 1279px)
+                            margin-bottom: 20px
+                        @media screen and (max-width: 767px)
+                            text-align: center
+                    p
+                        margin: 0 0 43px 0
+                        @include font-georgia(400, 15px, 16.5px, black)
+                        letter-spacing: 0.06rem
+                        text-align: left
+                        @media screen and (max-width: 1279px)
+                            font-size: 13px
+                            line-height: 14.3px
+                            letter-spacing: 0.05rem
+                            margin-bottom: 17px
+                        @media screen and (max-width: 767px)
+                            text-align: justify
+                            padding: 0 10px
+                            margin-bottom: 22px
+                    li
+                        @include font-georgia(400, 15px, 16.5px, black)
+                        margin-bottom: 10px
+                        text-align: left
+                        &::marker
+                            color: $color-main1
+                        @media screen and (max-width: 1279px)
+                            margin-bottom: 7px
+                        margin-left: 10px
+            h2
+                @include no-margin()
+                padding-top: 80px
+                @include font-georgia(400, 35px, 45.5px, $color-main2)
+                text-align: center
+                letter-spacing: 0.06em
+            .slider-wrapper
+                min-height: 435px
+                @include flex-hor(space-between)
+                .btn
+                    width: 52px
+                    height: 52px
+                .btn1
+                    @include bg-img('../../assets/images/button_arrow.png')
+                    &:hover
+                        cursor: pointer
+                        transition: 0.8s
+                        @include bg-img('../../assets/images/button_arrow_hover.png')
+                .btn2
+                    @include bg-img('../../assets/images/button_arrow.png')
+                    transform: rotate(180deg)
+                    transition: 0.8s
+                    &:hover
+                        cursor: pointer
+                        @include bg-img('../../assets/images/button_arrow_hover.png')
+                .left
+                    @include flex-vert(center)
+                    // margin-right: 53px
+                .right
+                    @include flex-vert(center)
+                    // margin-left: 53px
+
+                .slider
+                    @include flex-hor(space-between)
+                    align-items: center
+                    flex-wrap: wrap
+                    justify-content: center
+                    .itm
+                        width: 270px
+                        height: 435px
+                        background-color: #FAFAFA
+                        text-align: center
+                        border-radius: 9px
+                        margin: 60px 45px
+                        transition: 1s
+                        &:hover
+                            box-shadow: 0px 0px 15px -10px black
+                            transition: 0.8s
+                            cursor: pointer
+                    .itm1, .itm2, .itm3
+                        background-repeat: no-repeat
+                    p
+                        @include font-georgia (400, 20px, 22.72px, $color-main2)
+                        text-align: center
+                        margin-top: 300px
+                        margin-bottom: 30px
+                        letter-spacing: 0.06em
+                    button
+                        @include font-georgia(400, 17px, 22.1px, $color-main4)
+                        width: 187px
+                        height: 52px
+                        background-color: #FAFAFA
+                        border-radius: 100px
+                        border: 2px solid $color-main1
+                        letter-spacing: 0.06em
+                        &:hover
+                            background-color: $color-main1
+            .pets-btn  
+                width: 261px
+                height: 52px
+                background-color: $color-main1
+                @include font-georgia(400, 17px, 22.1px, #292929)
+                border: none
+                border-radius: 100px
+                margin-bottom: 100px
+                letter-spacing: 0.06em
+            .menu-mob
+                display: none
+
+        .help
+            background-color: white
+            min-height: 611px
+            padding: 0px
+            h2
+                @include no-margin()
+                padding-top: 80px
+                @include font-georgia(400, 35px, 45.5px, $color-main2)
+                text-align: center
+                margin-bottom: 60px
+                letter-spacing: 0.06em
+            .icons
+                @include flex-hor(space-between)
+                flex-wrap: wrap
+                justify-content: center
+                .itm
+                    height: 113px
+                    @include font-georgia(400, 20px, 23px, $color-main2)
+                    text-align: center
+                    margin: 0 60px 55px
+                    letter-spacing: 0.06em
+                    p
+                        margin-top: 30px
+                .itm1
+                    width: 60px
+                    height: 60px
+                    margin: auto
+                    @include bg-img('../../assets/icons/icn1.svg')
+                .itm2
+                    width: 60px
+                    height: 60px
+                    margin: auto
+                    @include bg-img('../../assets/icons/icn2.svg')
+                .itm3
+                    width: 60px
+                    height: 60px
+                    margin: auto
+                    @include bg-img('../../assets/icons/icn3.svg')
+                .itm4
+                    width: 60px
+                    height: 60px
+                    margin: auto
+                    @include bg-img('../../assets/icons/icn4.svg')
+                .itm5
+                    width: 60px
+                    height: 60px
+                    margin: auto
+                    @include bg-img('../../assets/icons/icn5.svg')
+                .itm6
+                    width: 60px
+                    height: 60px
+                    margin: auto
+                    @include bg-img('../../assets/icons/icn6.svg')
+                .itm7
+                    width: 60px
+                    height: 60px
+                    margin: auto
+                    @include bg-img('../../assets/icons/icn7.svg')
+                .itm8
+                    width: 60px
+                    height: 60px
+                    margin: auto
+                    @include bg-img('../../assets/icons/icn8.svg')
+                .itm9
+                    width: 60px
+                    height: 60px
+                    margin: auto
+                    @include bg-img('../../assets/icons/icn9.svg')
+            .icons2
+                padding: 0 84px
+        
+        .donation
+            background-color: $color-main5
+            @include bg-img('../../assets/images/donation-bg.jpg')
+            background-position-x: 98% 
+            min-height: 462px
+            .content
+                width: 380px
+                float: right
+                padding-top: 80px
+                padding-right: 182px
+                h2
+                    @include no-margin()            
+                    @include font-georgia(400, 35px, 45.5px, $color-main2)
+                    margin-bottom: 20px
+                    letter-spacing: 0.06em
+                .p1
+                    @include font-georgia(400, 15px, 16.5px, $color-main2)
+                    letter-spacing: 0.06em
+                    margin-bottom: 20px
+                .card
+                    position: sticky
+                    z-index: 1
+                    @include flex-hor(flex-start)
+                    align-items: center
+                    background-color: $color-main1
+                    border-radius: 9px
+                    width: 349px
+                    height: 43px
+                    margin-bottom: 20px
+                    .itm
+                        width: 30px
+                        height: 23px
+                        @include bg-img('../../assets/icons/credit-card.svg')
+                        margin: 0 15px
+                    p
+                        @include font-georgia(400, 20px, 23px, $color-main4)
+                        @include no-margin
+                        // flex-basis: 274px
+                        letter-spacing: 0.06em
+                a
+                    text-decoration: none
+                    &:visited
+                        color: $color-main4
+                    &:link
+                        color: $color-main4
+                    &:hover
+                        opacity: 0.7
+                        transition: 0.7s
+                .p2
+                    @include font-arial(400, 12px, 18px, #B2B2B2)
+                    font-style: italic
+            .puppy-donation
+                display: none
+                @media screen and (max-width: 1279px)
+                    width: 505px
+                    height: 261px
+                    @include bg-img('../../assets/images/puppy-donation-tablet.png')
+                    display: block
+                    position: absolute
+                    background-position-y: 421px
+                    padding-top: 421px
+                @media screen and (max-width: 767px)
+                    @include bg-img('../../assets/images/puppy-donation-mobile.png')
+                    width: 260px
+                    height: 135.2px
+                    background-position-y: 365px
+                    padding-top: 365px
+
+        footer
+            .puppy
+                width: 300px
+                height: 310px
+                @include bg-img('../../assets/images/puppy-tablet.png')
+                display: none
+                @media screen and (max-width: 1279px)
+                    display: block
+                    position: absolute
+                    left: 30.4%
+                    background-position-y: 328px
+                    padding-top: 328px
+                @media screen and (max-width: 767px)
+                    @include bg-img('../../assets/images/puppy-mobile.png')
+                    width: 260px
+                    height: 269px
+                    left: 9%
+                    background-position-y: 511px
+                    padding-top: 511px
+            a
+                position: sticky
+                z-index: 1
+                text-decoration: none
+                &:visited
+                    color: $color-main1
+                &:link
+                    color: $color-main1
+                &:hover
+                    opacity: 0.7
+                    transition: 0.7s
+            padding: 56px 0 0 40px
+            @include bg-img('../../assets/images/footer-bg.jpg')
+            min-height: 295px
+            @include flex-hor(flex-start)
+            h2
+                @include no-margin()            
+                @include font-georgia(400, 35px, 45.5px, white)
+                letter-spacing: 0.06em
+                width: 279px
+            p
+                @include font-georgia(400, 20px, 23px, $color-main1)
+                @include no-margin
+                letter-spacing: 0.06em
+            .content1
+                margin-right: 160px  
+                .str1
+                    margin-top: 39px
+                    @include flex-hor(flex-start)
+                    align-items: center
+                .str2
+                    margin-top: 40px
+                    @include flex-hor(flex-start)
+                    align-items: center
+                .itm1
+                    width: 40px
+                    height: 32px
+                    @include bg-img('../../assets/icons/ftr-icn-1.svg')
+                    margin-right: 20px
+                .itm2
+                    width: 40px
+                    height: 32px
+                    @include bg-img('../../assets/icons/ftr-icn-2.svg')
+                    margin-right: 20px
+            .content2
+                .str1
+                    margin-top: 31px
+                    @include flex-hor(flex-start)
+                    align-items: center
+                .str2
+                    margin-top: 34px
+                    @include flex-hor(flex-start)
+                    align-items: center
+                .itm1
+                    width: 22px
+                    height: 32px
+                    @include bg-img('../../assets/icons/ftr-icn-3.svg')
+                    margin-right: 20px
+                .itm2
+                    width: 22px
+                    height: 32px
+                    @include bg-img('../../assets/icons/ftr-icn-3.svg')
+                    margin-right: 20px
+
+
+
+
+
+@media screen and (max-width: $desktop)
+    body
+        .container
+            @include bg-img('../../assets/images/start-bg-tablet.jpg')
+            background-size: 100%
+            header
+                margin-top: 30px
+                padding: 0 30px
+                align-items: center
+                .logo
+                    h3
+                        line-height: 45px
+                    p
+                        line-height: 22px
+            
+            .start
+                min-height: 1075px
+                padding: 0 154px
+                display: flex
+                flex-direction: column
+                align-items: center
+                .content
+                    margin-top: 60px
+                    button
+                        margin-left: 126px
+                .puppy-start
+                    @include bg-img('../../assets/images/puppy-start.png')
+                    display: none
+                    @media screen and (max-width: 1279px)
+                        display: block
+                        width: 569px
+                        height: 593px
+                        position: absolute
+                        left: 22%
+                        background-position-y: 483px
+                        padding-top: 483px
+                    @media screen and (max-width: 767px)
+                        @include bg-img('../../assets/images/puppy-start-mobile.png')
+                        width: 260px
+                        height: 271.77px
+                        left: 15.625%
+                        background-position-y: 460px
+                        padding-top: 460px
+            
+            .about
+                background-color: white
+                min-height: 1048px
+                @include bg-img('../../assets/images/about-bg-tablet.jpg')
+                @include flex-vert(flex-start)
+                align-items: center
+                .content
+                    padding-top: 80px
+                    margin: 0
+            
+            .pets
+                min-height: 870px
+                padding: 0 30px
+                .slider-wrapper
+                    .slider
+                        .itm1
+                            margin: 60px 20px 60px 0
+                        .itm2
+                            margin: 60px 0 60px 20px
+                        .itm3
+                            display: none
+            
+            .help
+                min-height: 779px
+                .icons
+                    padding: 0 65px
+                    justify-content: space-between
+                    .itm
+                        margin: 0 0px 55px
+                        flex-basis: 177px
+
+            .donation
+                background-image: none
+                min-height: 783px
+                @include flex-vert(flex-start)
+                align-items: center
+                .content
+                    padding-right: 0
+            
+            footer
+                @include bg-img('../../assets/images/footer-bg-tablet.jpg')
+                justify-content: space-between
+                background-size: 100%
+                min-height: 635px
+                padding: 0 71px 0px 64px
+                .content1
+                    margin: 30px 0
+                .content2
+                    margin: 30px 0
+
+@media screen and (max-width: $tablet)
+    body
+        .container
+            @include bg-img('../../assets/images/footer-bg-mobile.jpg')
+            background-size: 100%
+            header
+                .menu-full
+                    @include flex-vert(space-between)
+                    @include no-margin()
+                    z-index: 10
+                    padding: 0
+                    position: fixed
+                    right: -330px
+                    top: 248px
+                    width: 243px
+                    align-items: flex-start
+                    li
+                        @include font-arial(400, 32px, 51.2px, $color-main3)
+                        width: 100%
+                        flex-basis: 93px
+                    .m1
+                        @include bg-img('../../assets/icons/border.svg')
+                        background-position-y: 50px
+                    .m2
+                        padding: 0 60px
+                    .m3
+                        padding: 0 9px
+                    .m4
+                        padding: 0 58px
+                .burger
+                    display: block
+            
+            .start
+                padding: 0 10px
+                min-height: 732px
+                background-size: 100%
+                .content
+                    text-align: center
+                    h1
+                        font-size: 25px
+                        line-height: 32.5px
+                        letter-spacing: 0.06em
+                    button
+                        margin: 42px 0
+        
+            .about
+                min-height: 974px
+                @include bg-img('../../assets/images/about-bg-mobile.jpg')
+                padding: 0 25px
+                .content
+                    max-width: 430px
+                    padding-top: 42px
+                    margin: 0
+                    width: 100%
+                    h2
+                        font-size: 25px
+                        line-height: 32.5px
+                        text-align: center
+                    p
+                        text-align: justify
+                        margin-bottom: 23px
+            
+            .pets
+                min-height: 791px
+                padding: 0
+                h2
+                    font-size: 25px
+                    line-height: 32.5px
+                    padding-top: 42px
+                .slider-wrapper
+                    justify-content: center
+                    .left
+                        display: none
+                    .right
+                        display: none
+                    .slider
+                        .itm1
+                            margin: 42px 0 0 0
+                        .itm2
+                            display: none
+                .menu-mob
+                    display: block
+                    width: 184px
+                    margin: 20px auto 42px
+                    @include flex-hor(space-between)
+                    .btn
+                        width: 52px
+                        height: 52px
+                    .btn1
+                        @include bg-img('../../assets/images/button_arrow.png')
+                    .btn2
+                        @include bg-img('../../assets/images/button_arrow.png')
+                        transform: rotate(180deg)
+                .pets-btn
+                    margin: 0
+            
+            .help
+                min-height: 600px
+                padding: 0 15px
+                h2
+                    font-size: 25px
+                    line-height: 32.5px
+                    padding-top: 42px
+                    margin-bottom: 42px
+                .icons
+                    padding: 0
+                    .itm
+                        flex-basis: 130px
+                        margin-bottom: 5px
+                        &:last-of-type
+                            margin-bottom: 11px
+                        p
+                            font-size: 15px
+                            line-height: 16.5px
+                            margin: 20px 0 0px
+                    .itm1, .itm2, .itm3, .itm4, .itm5, .itm6, .itm7, .itm8, .itm9
+                        width: 50px
+                        height: 50px
+                        background-size: 100%
+
+            .donation
+                background-image: none
+                background-size: 100%
+                min-height: 542.2px
+                padding: 0 20px
+                .content
+                    padding: 0
+                    width: 100%
+                    h2
+                        padding-top: 42px
+                        font-size: 25px
+                        line-height: 32.5px
+                        text-align: center
+                    .p1
+                        letter-spacing: 0
+                        text-align: center
+                        margin: 24px 0
+                    .p2
+                        margin-top: 20px
+                        text-align: justify
+                    .card
+                        width: 281px
+                        margin: auto
+                        p
+                            font-size: 15px
+                            line-height: 16.5px
+            
+            footer
+                flex-wrap: wrap
+                @include bg-img('../../assets/images/footer-bg-mobile.jpg')
+                min-height: 752px
+                padding: 30px 0
+                align-content: flex-start
+                h2
+                    font-size: 25px
+                    line-height: 32.5px
+                    text-align: center
+                    padding: 0 21px
+                .content1
+                    @include flex-vert(flex-start)
+                    align-items: center
+                    margin: 0
+                    width: 100%
+                    .str1, .str2
+                        padding: 0 35px
+                        text-align: center
+                .content2
+                    @include flex-vert(flex-start)
+                    align-items: center
+                    margin-top: 40px
+                    width: 100%
+                    .str1, .str2
+                        text-align: center
+                        margin-top: 40px
+                        width: 100%
+                        padding-left: 19px
+                        text-align: left
+
+                        
+                            
