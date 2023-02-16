@@ -1,0 +1,531 @@
+$color-main1: #F1CDB3
+$color-main2: #545454
+$color-main3: #CDCDCD
+$color-main4: #292929
+$color-main5: #F6F6F6
+
+$desktop: 1279px
+$tablet: 767px
+$mobile: 320px
+
+
+@mixin flex-hor($type)
+    display: flex
+    justify-content: $type
+@mixin flex-vert($type)
+    display: flex
+    flex-direction: column
+    justify-content: $type
+@mixin bg-img($url)
+    background-image: url($url)
+    background-repeat: no-repeat
+@mixin no-margin()
+    margin: 0
+@mixin font-arial($weight, $size, $line, $color)
+    font-family: Arial
+    font-weight: $weight
+    font-size: $size
+    line-height: $line
+    color: $color
+@mixin font-georgia($weight, $size, $line, $color)
+    font-family: Georgia, 'Times New Roman', serif
+    font-weight: $weight
+    font-size: $size
+    line-height: $line
+    color: $color
+@mixin button()
+    cursor: pointer
+    transition: 0.8s
+html
+    scroll-behavior: smooth
+    overflow-x: hidden
+
+button
+    &:hover
+        @include button()
+
+a
+    text-decoration: none
+    &:visited
+        color: $color-main3
+    &:link
+        color: $color-main3
+
+ul
+    list-style-type: none
+
+.m1
+    width: 114px
+.m2
+    width: 58px
+    border-bottom: 2px solid $color-main1 
+    @media screen and (max-width: $tablet)
+        border: none
+.m3
+    width: 106px
+.m4
+    width: 60px
+
+
+
+body
+    @include no-margin()
+    @include flex-hor(center)
+    background-color: #292929
+    .container
+        width: 1280px
+        header
+            background-color: white
+            padding: 0 40px
+            @include flex-hor(space-between)
+            height: 120px
+            align-items: center
+            .logo
+                a
+                    &:visited
+                        color: #545454
+                    &:link
+                        color: #545454
+                @include flex-vert(center)
+                h1
+                    @include no-margin()
+                    @include font-georgia(400, 32px, 35.2px, #292929)
+                    margin-bottom: 10px
+                    letter-spacing: 0.06em
+                p
+                    @include no-margin()
+                    @include font-arial(400, 13px, 14.95px, #292929)
+                    text-align: center
+                    letter-spacing: 0.10em
+            .menu-full
+                @include flex-hor(space-between)
+                @include no-margin()
+                align-items: center
+                padding: 0
+                width: 443px
+                li
+                    @include font-arial(400, 15px, 24px, $color-main3)
+            .burger
+                display: none
+                width: 30px
+                height: 22px
+                @include bg-img('../../assets/icons/burger.svg')
+                z-index: 12
+                transition: 0.5s
+            .menu-bg
+                position: fixed
+                top: 0
+                right: -330px
+                width: 330px
+                height: 100%
+                z-index: 9
+                background-color: $color-main4
+                transition: 0.5s
+            .bg
+                position: fixed
+                top: 0
+                right: 0
+                width: 110%
+                height: 110%
+                background-color: $color-main4
+                z-index: -7
+                opacity: 0
+                transition: 0.8s
+                @media screen and (min-width: 768px)
+                    display: none
+
+        .pets
+            min-height: 1342px
+            text-align: center
+            background-color: $color-main5
+            padding: 0 40px
+            .exit
+                @include bg-img('../../assets/images/cross.png')
+                background-size: 100%
+                transition: 0.8s
+                &:hover
+                    @include bg-img('../../assets/icons/cross-hover.svg')
+                    cursor: pointer
+                width: 52px
+                height: 52px
+                position: absolute
+                left: 99%
+                top: -10%
+                @media screen and (max-width: 1279px)
+                    left: 98.5%
+                    top: -15%
+                @media screen and (max-width: 767px)
+                    left: 90.5%
+            .bg3
+                position: fixed
+                top: 0
+                right: 0
+                width: 110%
+                height: 110%
+                background-color: $color-main4
+                z-index: -1
+                opacity: 0
+                transition: 0.8s
+            .pet-box
+                width: 900px
+                min-height: 500px
+                position: absolute
+                background-color: white
+                border-radius: 9px
+                margin-top: 388px
+                left: calc((100% - 900px)/2)
+                opacity: 0
+                z-index: -1
+                transition: 0.8s
+                @include flex-hor(space-between)
+                @media screen and (max-width: 1279px)
+                    margin-top: 400px
+                    width: 630px
+                    min-height: 350px
+                    left: calc((100% - 630px)/2)
+                @media screen and (max-width: 767px)
+                    margin-top: 500px
+                    width: 240px
+                    min-height: 341px
+                    left: calc((100% - 240px)/2)
+                .img
+                    flex-basis: 500px
+                    background-size: 100%
+                    border-radius: 9px
+                    background-repeat: no-repeat
+                    @media screen and (max-width: 1279px)
+                        flex-basis: 350px
+                    @media screen and (max-width: 767px)
+                        display: none
+                .text
+                    flex-basis: 400px
+                    padding: 50px 17px 0 90px
+                    @media screen and (max-width: 1279px)
+                        padding: 10px 5px 0 30px
+                        flex-basis: 280px
+                    @media screen and (max-width: 767px)
+                        padding: 0
+                        margin-top: 10px
+                    h4
+                        margin: 0 0 10px 0
+                        @include font-georgia(400, 35px, 45.5px, black)
+                        letter-spacing: 0.11rem
+                        text-align: left
+                        @media screen and (max-width: 767px)
+                            text-align: center
+                    h5
+                        margin: 0 0 40px 0
+                        @include font-georgia(400, 20px, 23px, black)
+                        letter-spacing: 0.08rem
+                        text-align: left
+                        @media screen and (max-width: 1279px)
+                            margin-bottom: 20px
+                        @media screen and (max-width: 767px)
+                            text-align: center
+                    p
+                        margin: 0 0 43px 0
+                        @include font-georgia(400, 15px, 16.5px, black)
+                        letter-spacing: 0.06rem
+                        text-align: left
+                        @media screen and (max-width: 1279px)
+                            font-size: 13px
+                            line-height: 14.3px
+                            letter-spacing: 0.05rem
+                            margin-bottom: 17px
+                        @media screen and (max-width: 767px)
+                            text-align: justify
+                            padding: 0 10px
+                            margin-bottom: 22px
+                    li
+                        @include font-georgia(400, 15px, 16.5px, black)
+                        margin-bottom: 10px
+                        text-align: left
+                        &::marker
+                            color: $color-main1
+                        @media screen and (max-width: 1279px)
+                            margin-bottom: 7px
+                        margin-left: 10px
+            h2
+                @include no-margin()
+                @include font-georgia(400, 35px, 45.5px, $color-main2)
+                padding-top: 80px
+                margin-bottom: 60px
+                letter-spacing: 0.06em
+            .container
+                width: 100% 
+                @include flex-hor(space-between)
+                flex-wrap: wrap
+                .itm
+                    flex-basis: 270px
+                    height: 435px
+                    background-color: #FAFAFA
+                    margin-bottom: 30px
+                    border-radius: 9px
+                    background-repeat: no-repeat
+                    transition: 0.8s
+                    &:hover
+                        box-shadow: 0px 0px 15px -10px black
+                        transition: 0.8s
+                        cursor: pointer
+                p
+                    margin-top: 299px
+                    margin-bottom: 30px
+                    @include font-georgia(400, 20px, 22.72px, $color-main2)
+                    letter-spacing: 0.06em
+                button
+                    background-color: #FAFAFA
+                    border: 2px solid $color-main1
+                    width: 187px
+                    height: 52px
+                    border-radius: 100px
+                    @include font-georgia(400, 17px, 22.1px, $color-main4)
+                    letter-spacing: 0.06em
+                    &:hover
+                        background-color: $color-main1
+            .menu
+                padding-top: 30px
+                margin: 0 auto
+                padding-bottom: 76px
+                max-width: 340px
+                height: 52px
+                @include flex-hor(space-between)
+                .btn
+                    width: 52px
+                    height: 52px
+                    border-radius: 50%
+                .page
+                    @include bg-img('../../assets/icons/page.svg')
+                    @include font-georgia(400, 20px, 52px, black)
+                    // padding-top: 14px
+                .activeR
+                    @include bg-img('../../assets/icons/btnX-active.svg')
+                    &:hover
+                        cursor: pointer
+                        transition: 0.8s
+                        @include bg-img('../../assets/icons/btnX-hover.svg')   
+                .activeRR
+                    @include bg-img('../../assets/icons/btnXX-active.svg')
+                    &:hover
+                        cursor: pointer
+                        transition: 0.8s
+                        @include bg-img('../../assets/icons/btnXX-hover.svg')   
+                .inactiveR
+                    transform: rotate(180deg)
+                    @include bg-img('../../assets/icons/btnX-inactive.svg')
+                .inactiveRR
+                    transform: rotate(180deg)
+                    @include bg-img('../../assets/icons/btnXX-inactive.svg')
+                .activeL
+                    transform: rotate(180deg)
+                    @include bg-img('../../assets/icons/btnX-active.svg')
+                    &:hover
+                        cursor: pointer
+                        transition: 0.8s
+                        @include bg-img('../../assets/icons/btnX-hover.svg')   
+                .activeLL
+                    transform: rotate(180deg)
+                    @include bg-img('../../assets/icons/btnXX-active.svg')
+                    &:hover
+                        cursor: pointer
+                        transition: 0.8s
+                        @include bg-img('../../assets/icons/btnXX-hover.svg')   
+                .inactiveL
+                    @include bg-img('../../assets/icons/btnX-inactive.svg')
+                .inactiveLL
+                    @include bg-img('../../assets/icons/btnXX-inactive.svg')
+
+        
+        footer
+            .puppy
+                width: 300px
+                height: 310px
+                @include bg-img('../../assets/images/puppy-tablet.png')
+                display: none
+                @media screen and (max-width: 1279px)
+                    display: block
+                    position: absolute
+                    left: 30.4%
+                    background-position-y: 328px
+                    padding-top: 328px
+                @media screen and (max-width: 767px)
+                    @include bg-img('../../assets/images/puppy-mobile.png')
+                    width: 260px
+                    height: 269px
+                    left: 9%
+                    background-position-y: 511px
+                    padding-top: 511px
+            a
+                position: sticky
+                z-index: 1
+                text-decoration: none
+                &:visited
+                    color: $color-main1
+                &:link
+                    color: $color-main1
+                &:hover
+                    opacity: 0.7
+                    transition: 0.7s
+            padding: 56px 0 0 40px
+            @include bg-img('../../assets/images/footer-bg.jpg')
+            min-height: 295px
+            @include flex-hor(flex-start)
+            h2
+                @include no-margin()            
+                @include font-georgia(400, 35px, 45.5px, white)
+                letter-spacing: 0.06em
+                width: 279px
+            p
+                @include font-georgia(400, 20px, 23px, $color-main1)
+                @include no-margin
+                letter-spacing: 0.06em
+            .content1
+                margin-right: 160px  
+                .str1
+                    margin-top: 39px
+                    @include flex-hor(flex-start)
+                    align-items: center
+                .str2
+                    margin-top: 40px
+                    @include flex-hor(flex-start)
+                    align-items: center
+                .itm1
+                    width: 40px
+                    height: 32px
+                    @include bg-img('../../assets/icons/ftr-icn-1.svg')
+                    margin-right: 20px
+                .itm2
+                    width: 40px
+                    height: 32px
+                    @include bg-img('../../assets/icons/ftr-icn-2.svg')
+                    margin-right: 20px
+            .content2
+                .str1
+                    margin-top: 31px
+                    @include flex-hor(flex-start)
+                    align-items: center
+                .str2
+                    margin-top: 34px
+                    @include flex-hor(flex-start)
+                    align-items: center
+                .itm1
+                    width: 22px
+                    height: 32px
+                    @include bg-img('../../assets/icons/ftr-icn-3.svg')
+                    margin-right: 20px
+                .itm2
+                    width: 22px
+                    height: 32px
+                    @include bg-img('../../assets/icons/ftr-icn-3.svg')
+                    margin-right: 20px
+
+
+@media screen and (max-width: $desktop)
+    body
+        .container
+            header
+                padding: 0 30px
+
+            .pets
+                padding: 0 94px
+                h2
+                    margin-bottom: 30px
+                .container
+                    .itm7, .itm8
+                        display: none
+                .menu
+                    padding-top: 10px
+
+            footer
+                @include bg-img('../../assets/images/footer-bg-tablet.jpg')
+                justify-content: space-between
+                background-size: 100%
+                min-height: 635px
+                padding: 0 71px 0px 64px
+                .content1
+                    margin: 30px 0
+                .content2
+                    margin: 30px 0
+
+@media screen and (max-width: $tablet)
+    body
+        .container
+            header
+                .menu-full
+                    @include flex-vert(space-between)
+                    @include no-margin()
+                    z-index: 10
+                    padding: 0
+                    position: fixed
+                    right: -330px
+                    top: 248px
+                    width: 243px
+                    align-items: flex-start
+                    li
+                        @include font-arial(400, 32px, 51.2px, $color-main3)
+                        width: 100%
+                        flex-basis: 93px
+                    .m1
+                        
+                    .m2
+                        padding: 0 60px
+                        @include bg-img('../../assets/icons/border.svg')
+                        background-size: 123px 
+                        background-position-y: 50px
+                        background-position-x: 60px
+                    .m3
+                        padding: 0 9px
+                    .m4
+                        padding: 0 58px
+                .burger
+                    display: block
+
+            .pets
+                padding: 0 10px
+                h2
+                    font-size: 25px
+                    line-height: 32.5px
+                    padding-top: 42px
+                    margin-bottom: 42px
+                .container
+                    justify-content: center 
+                    .itm4
+                        display: none
+                    .itm5
+                        display: none
+                    .itm6
+                        display: none
+                .menu
+                    max-width: 300px
+                    padding-bottom: 42px
+
+            footer
+                flex-wrap: wrap
+                @include bg-img('../../assets/images/footer-bg-mobile.jpg')
+                min-height: 752px
+                padding: 30px 0
+                align-content: flex-start
+                h2
+                    font-size: 25px
+                    line-height: 32.5px
+                    text-align: center
+                    padding: 0 21px
+                .content1
+                    @include flex-vert(flex-start)
+                    align-items: center
+                    margin: 0
+                    width: 100%
+                    .str1, .str2
+                        padding: 0 35px
+                        text-align: center
+                .content2
+                    @include flex-vert(flex-start)
+                    align-items: center
+                    margin-top: 40px
+                    width: 100%
+                    .str1, .str2
+                        text-align: center
+                        margin-top: 40px
+                        width: 100%
+                        padding-left: 19px
+                        text-align: left
+                        
